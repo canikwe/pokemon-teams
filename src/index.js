@@ -40,16 +40,21 @@ function renderTrainers(t){
 }
 
 function addPokemon(t, ul) {
-  //generate new pokemon for trainer
-  fetch(`http://localhost:3000/pokemons`, {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({trainer_id: t.id})
-  })
-  .then(res => res.json())
-  .then((p) => {renderPokemon(p, ul)})
+  //add conditional to check that the trainer only has 6 pokemon at a time
+  if (ul.childElementCount >= 6) {
+    alert("You must release before you inhale")
+  } else {
+  //generate new pokemon for trainer if current pokemon is less than 6
+    fetch(`http://localhost:3000/pokemons`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({trainer_id: t.id})
+    })
+    .then(res => res.json())
+    .then((p) => {renderPokemon(p, ul)})
+  }
 }
 
 
