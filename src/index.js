@@ -81,7 +81,13 @@ function deletePokemon(p, li){
   const ul = li.parentElement
   
   ul.removeChild(li)
-  debugger
+  
+  fetch(`http://localhost:3000/pokemons/${p.id}`, {
+    method: "DELETE"
+  })
+  .then(res => res.json())
+  .then(console.log)
+  
 }
 
 
