@@ -29,6 +29,10 @@ function renderTrainers(t){
     
     li.appendChild(btn)
     ul.appendChild(li)
+    
+    btn.addEventListener("click", (e) => {
+      e.preventDefault()
+      deletePokemon(p, li)})
     })
   
   div.className = "card"
@@ -72,3 +76,17 @@ function renderPokemon(p, ul) {
   li.appendChild(btn)
   ul.appendChild(li)
 }
+
+function deletePokemon(p, li){
+  const ul = li.parentElement
+  
+  ul.removeChild(li)
+  debugger
+}
+
+
+
+
+
+
+
